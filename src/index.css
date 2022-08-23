@@ -1,0 +1,12 @@
+:root{
+    --clear-mobile: url('./images/clear-mobile.jpg');
+    --clear-pc: url('./images/clear-pc.jpg');
+    --cloudy-mobile: url('./images/cloudy-mobile.jpg');
+    --cloudy-pc: url('./images/cloudy-pc.jpg');
+    --rain-mobile: url('./images/rain-mobile.jpg');
+    --rain-pc: url('./images/rain-pc.jpg');
+    --snow-mobile: url('./images/snow-mobile.jpg');
+    --snow-pc: url('./images/snow-pc.jpg');
+    --sunny-mobile: url('./images/sunny-mobile.jpg');
+    --sunny-pc: url('./images/sunny-pc.jpg');
+}
