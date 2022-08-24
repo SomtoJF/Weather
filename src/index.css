@@ -1,12 +1,45 @@
-:root{
-    --clear-mobile: url('./images/clear-mobile.jpg');
-    --clear-pc: url('./images/clear-pc.jpg');
-    --cloudy-mobile: url('./images/cloudy-mobile.jpg');
-    --cloudy-pc: url('./images/cloudy-pc.jpg');
-    --rain-mobile: url('./images/rain-mobile.jpg');
-    --rain-pc: url('./images/rain-pc.jpg');
-    --snow-mobile: url('./images/snow-mobile.jpg');
-    --snow-pc: url('./images/snow-pc.jpg');
-    --sunny-mobile: url('./images/sunny-mobile.jpg');
-    --sunny-pc: url('./images/sunny-pc.jpg');
+:root{ 
+    --clear: url('./images/clear-pc.jpg');
+    --cloudy: url('./images/cloudy-pc.jpg');
+    --rain: url('./images/rain-pc.jpg');
+    --snow: url('./images/snow-pc.jpg');
+    --sunny: url('./images/sunny-pc.jpg');
+    --background: var(--clear);
 }
+body{
+    padding: 0px;
+    margin: 0px;
+}
+
+html{
+    padding: 0px;
+    margin: 0px;
+}
+
+#background{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: var(--background);
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center
+}
+
+#container{
+    height: 100%;
+    width: max(40%, 250px);
+    border: solid 2px black;
+}
+
+/* @media all and (max-width: 1000px) {
+    :root{
+        --clear: url('./images/clear-mobile.jpg');
+        --cloudy: url('./images/cloudy-mobile.jpg');
+        --rain: url('./images/rain-mobile.jpg');
+        --snow: url('./images/snow-mobile.jpg');
+        --sunny: url('./images/sunny-mobile.jpg');
+    }
+} */
