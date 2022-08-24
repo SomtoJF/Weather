@@ -1,6 +1,6 @@
 let locationContainer = document.getElementById('Location');
 
-function getLocation(city){
+function displayLoc(city){
     let form = document.createElement('form');
     let inputLocation = document.createElement('input');
     inputLocation.setAttribute('id', 'inputLocation');
@@ -13,4 +13,4 @@ function getLocation(city){
     locationContainer.appendChild(form);
 }
 
-export default getLocation;
+export default displayLoc;
