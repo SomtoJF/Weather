@@ -1,15 +1,17 @@
 let locationContainer = document.getElementById('Location');
-import {attributeSetter} from './DOMmethods';
+import {attributeSetter, childAppender} from './DOMmethods';
 
 function displayLoc(city){
     let form = document.createElement('form');
     let inputLocation = document.createElement('input');
     inputLocation = attributeSetter(inputLocation, ['id', 'inputLocation'], ['required', ''], ['placeholder', city]);
+
     let submitButton = document.createElement('button');
     submitButton.setAttribute('type', 'submit');
-    form.appendChild(inputLocation);
-    form.appendChild(submitButton);
+
+    form = childAppender(form, [inputLocation, submitButton]);
     locationContainer.appendChild(form);
+    
     form.addEventListener('submit', (e)=>
     {
         getData(inputLocation.value);
