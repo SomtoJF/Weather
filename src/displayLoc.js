@@ -1,5 +1,6 @@
 let locationContainer = document.getElementById('Location');
 import {attributeSetter, childAppender} from './DOMmethods';
+import './displayLoc.css';
 
 function displayLoc(city){
     let form = document.createElement('form');
@@ -11,7 +12,7 @@ function displayLoc(city){
 
     form = childAppender(form, [inputLocation, submitButton]);
     locationContainer.appendChild(form);
-    
+
     form.addEventListener('submit', (e)=>
     {
         getData(inputLocation.value);
