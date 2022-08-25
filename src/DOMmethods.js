@@ -6,4 +6,14 @@ function attributeSetter(){
     return arguments[0];
 };
 
-export {attributeSetter};
+function childAppender(parent, childArray){
+    for(let i = 0; i < childArray.length; i++){
+        parent.appendChild(childArray[i]);
+    }
+    return parent;
+}
+export 
+{
+    attributeSetter, 
+    childAppender
+};
