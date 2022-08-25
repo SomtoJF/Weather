@@ -34,12 +34,13 @@ html{
 
 #container{
     height: 100%;
-    width: max(40%, 250px);
-    border: solid 2px black;
+    width: max(50%, 280px);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
+    padding: 5px;
 }
 
 /* @media all and (max-width: 1000px) {
