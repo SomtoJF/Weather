@@ -1,8 +1,8 @@
 #Weather{
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 #Weather div:first-child{
     font-size: 4rem;
-    text-align: right;
 }
