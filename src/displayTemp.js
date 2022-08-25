@@ -1,4 +1,5 @@
 let weatherContainer = document.getElementById('Weather');
+import './displayTemp.css';
 
 function displayTemp (temperature, Weather){
     for(let i = 0; i < arguments.length; i++){
