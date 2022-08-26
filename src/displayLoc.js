@@ -2,6 +2,7 @@ let locationContainer = document.getElementById('Location');
 let weatherContainer = document.getElementById('Weather');
 import {attributeSetter, childAppender} from './DOMmethods';
 import {default as displayTemp} from "./displayTemp";
+import {default as changeBackground} from './background';
 import './displayLoc.css';
 
 function displayLoc(city){
@@ -33,6 +34,7 @@ async function getData(location){
     });
     response = await response.json();
     console.log(response);
+    changeBackground(response.weather[0].main);
     weatherContainer.innerHTML = '';
     displayTemp(response.main.temp, response.weather[0].main);
     return response;
