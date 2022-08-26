@@ -6,6 +6,10 @@ function displayTemp (temperature, Weather){
         let div = document.createElement('div');
         div.textContent = arguments[i];
         weatherContainer.appendChild(div);
-    }
+
+        if(i == 0){
+            div.textContent += '°C'
+        };
+    };
 };
 export default displayTemp;
