@@ -36,7 +36,7 @@ async function getData(location){
     console.log(response);
     changeBackground(response.weather[0].main);
     weatherContainer.innerHTML = '';
-    displayTemp(response.main.temp, toTitlecase(response.weather[0].description));
+    displayTemp(response.weather[0].main, [response.main.temp,toTitlecase(response.weather[0].description)]);
     return response;
 }
 getData().catch((response)=>{
