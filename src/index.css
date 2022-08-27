@@ -35,7 +35,7 @@ html{
 
 #container{
     height: 100%;
-    width: max(50%, 280px);
+    width: max(50%, 350px);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -44,6 +44,11 @@ html{
     padding: 5px;
 }
 
+@media all and (max-width: 300px) {
+    #container{
+        width: 280px;
+    }
+}
 /* @media all and (max-width: 1000px) {
     :root{
         --clear: url('./images/clear-mobile.jpg');
