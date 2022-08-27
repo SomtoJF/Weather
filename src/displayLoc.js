@@ -36,10 +36,18 @@ async function getData(location){
     console.log(response);
     changeBackground(response.weather[0].main);
     weatherContainer.innerHTML = '';
-    displayTemp(response.main.temp, response.weather[0].main);
+    displayTemp(response.main.temp, toTitlecase(response.weather[0].description));
     return response;
 }
 getData().catch((response)=>{
     alert('Error');
 })
 export default displayLoc;
+
+function toTitlecase(string){
+    string = string.split(' ');
+    for(let i = 0; i < string.length; i++){
+        string[i] = string[i].charAt(0).toUpperCase() + string[i].slice(1);
+    };
+    return string.join(' ');
+};
