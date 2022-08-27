@@ -1,3 +1,11 @@
+:root{
+    --sunny-icon:url('./images/sunny-icon.png');
+    --rainy-icon:url('./images/rainy-icon.png');
+    --cloudy-icon:url('./images/cloudy-icon.png');
+    --snowy-icon:url('./images/snowy-icon.png');
+    --clear-icon:url('./images/clear-icon.png');
+}
+
 #Weather{
     display: flex;
     flex-direction: column;
@@ -5,4 +13,16 @@
 }
 #Weather div:first-child{
     font-size: 4rem;
+}
+#Weather > div:nth-child(2){
+    display: flex;
+    justify-content: flex-start;
+    gap: 5px;
+}
+#icon{
+    height: 100%;
+    width: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
 }
