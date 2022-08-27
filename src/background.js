@@ -1,4 +1,3 @@
-let backgroundContainer = document.getElementById('background');
 let rootElement = document.documentElement;
 let value = getComputedStyle(rootElement);
 
@@ -25,4 +24,27 @@ function changeBackground(weather){
     };
 };
 
+function changeIcon(element, weather){
+    if(weather == 'Clouds'){
+
+        element.style.backgroundImage = value.getPropertyValue('--cloudy-icon');
+    };
+    if(weather == 'Rain'){
+
+        element.style.backgroundImage = value.getPropertyValue('--rainy-icon');
+    };
+    if(weather == 'Snow'){
+
+        element.style.backgroundImage = value.getPropertyValue('--snowy-icon');
+    };
+    if(weather == 'Clear'){
+
+        element.style.backgroundImage = value.getPropertyValue('--clear-icon');
+    };
+    if(weather == 'Sunny'){
+
+        element.style.backgroundImage = value.getPropertyValue('--sunny-icon');
+    };
+};
+export {changeIcon};
 export default changeBackground;
