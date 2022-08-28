@@ -1,11 +1,11 @@
 let locationContainer = document.getElementById('Location');
-let weatherContainer = document.getElementById('Weather');
 import {attributeSetter, childAppender} from './DOMmethods';
 import {default as displayTemp} from "./displayTemp";
 import {default as changeBackground} from './background';
+import {format} from 'date-fns';
 import './displayLoc.css';
 
-function displayLoc(city){
+function displayLoc(city, timestamp){
     let form = document.createElement('form');
     let inputLocation = document.createElement('input');
     inputLocation = attributeSetter(inputLocation, ['id', 'inputLocation'], ['required', ''], ['placeholder', city]);
@@ -13,14 +13,18 @@ function displayLoc(city){
     let submitButton = document.createElement('button');
     submitButton.setAttribute('type', 'submit');
 
+    let dateContainer = document.createElement('div');
+    dateContainer.setAttribute('id', 'date');
+    let date = new Date(timestamp);
+    dateContainer.textContent = format(date, "hh:mm aaa '-' EEEE, PP");
+
     form = childAppender(form, [inputLocation, submitButton]);
-    locationContainer.appendChild(form);
+    childAppender(locationContainer, [form, dateContainer]);
 
     form.addEventListener('submit', (e)=>
     {
         getData(inputLocation.value);
         locationContainer.innerHTML = '';
-        displayLoc(inputLocation.value);
         e.preventDefault();
     }
     );
@@ -35,7 +39,7 @@ async function getData(location){
     response = await response.json();
     console.log(response);
     changeBackground(response.weather[0].main);
-    weatherContainer.innerHTML = '';
+    displayLoc(location, timezoneToTimestamp(response.timezone));
     displayTemp(response.weather[0].main, [response.main.temp, toTitlecase(response.weather[0].description)]);
     return response;
 }
@@ -50,4 +54,13 @@ function toTitlecase(string){
         string[i] = string[i].charAt(0).toUpperCase() + string[i].slice(1);
     };
     return string.join(' ');
+};
+
+function timezoneToTimestamp(timezone) {
+    let d = new Date();
+    let localTime = d.getTime();
+    let localOffset = d.getTimezoneOffset() * 60000;
+    let utc = localTime + localOffset;
+    let timestamp = utc + (1000 * timezone);
+    return timestamp;
 };
