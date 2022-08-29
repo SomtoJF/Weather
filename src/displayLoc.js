@@ -2,6 +2,7 @@ let locationContainer = document.getElementById('Location');
 import {attributeSetter, childAppender} from './DOMmethods';
 import {default as displayTemp} from "./displayTemp";
 import {default as changeBackground} from './background';
+import {default as displayCondition} from './displayCondition';
 import {format} from 'date-fns';
 import './displayLoc.css';
 
@@ -41,6 +42,7 @@ async function getData(location){
     changeBackground(response.weather[0].main);
     displayLoc(location, timezoneToTimestamp(response.timezone));
     displayTemp(response.weather[0].main, [response.main.temp, toTitlecase(response.weather[0].description)]);
+    displayCondition(response.wind.speed, response.main.pressure, response.main.humidity);
     return response;
 }
 getData().catch((response)=>{
