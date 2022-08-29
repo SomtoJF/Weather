@@ -49,7 +49,7 @@ html{
         width: 280px;
     }
 }
-/* @media all and (max-width: 1000px) {
+@media all and (max-width: 1000px) {
     :root{
         --clear: url('./images/clear-mobile.jpg');
         --cloudy: url('./images/cloudy-mobile.jpg');
@@ -57,4 +57,4 @@ html{
         --snow: url('./images/snow-mobile.jpg');
         --sunny: url('./images/sunny-mobile.jpg');
     }
-} */
+}
