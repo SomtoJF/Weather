@@ -1,4 +1,5 @@
-# Weather App
+# Weather App BETA
+## [View Live](https://somtojf.github.io/Weather/)
 ## Resources and References
 * [Jack Finnigan](https://unsplash.com/@jackofallstreets)
 * [Pan Xiaozhen](https://unsplash.com/@zhenhappy)
