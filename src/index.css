@@ -41,6 +41,7 @@ html{
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
+    gap: 10px;
     padding: 5px;
 }
 
