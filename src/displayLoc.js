@@ -48,7 +48,6 @@ async function getData(location){
 getData().catch((response)=>{
     alert('Error');
 })
-export default displayLoc;
 
 function toTitlecase(string){
     string = string.split(' ');
@@ -66,3 +65,6 @@ function timezoneToTimestamp(timezone) {
     let timestamp = utc + (1000 * timezone);
     return timestamp;
 };
+
+export default displayLoc;
+export { getData };
