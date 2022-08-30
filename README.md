@@ -1,7 +1,9 @@
 # Weather App BETA
 ## [View Live](https://somtojf.github.io/Weather/)
-## Usage: Skip initial Error message and use as noral
-## Notice: Invalid search entries break the site. After which you'll have to reload the webpage to continue. Bug-Fixes incoming.
+## Usage
+Skip initial Error message and use as noral
+## Notice
+Invalid search entries break the site. After which you'll have to reload the webpage to continue. Bug-Fixes incoming.
 ## Resources and References
 * [Jack Finnigan](https://unsplash.com/@jackofallstreets)
 * [Pan Xiaozhen](https://unsplash.com/@zhenhappy)
