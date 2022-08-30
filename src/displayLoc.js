@@ -1,4 +1,5 @@
 let locationContainer = document.getElementById('Location');
+let errorContainer = document.getElementById('error');
 import {attributeSetter, childAppender} from './DOMmethods';
 import {default as displayTemp} from "./displayTemp";
 import {default as changeBackground} from './background';
@@ -38,7 +39,8 @@ async function getData(location){
         mode: 'cors'
     });
     response = await response.json();
-    console.log(response);
+    errorContainer.textContent = '';
+    // console.log(response);
     changeBackground(response.weather[0].main);
     displayLoc(location, timezoneToTimestamp(response.timezone));
     displayTemp(response.weather[0].main, [response.main.temp, toTitlecase(response.weather[0].description)]);
@@ -46,7 +48,7 @@ async function getData(location){
     return response;
 }
 getData().catch((response)=>{
-    alert('Error');
+    errorContainer.textContent = 'Invalid Entry';
 })
 
 function toTitlecase(string){
