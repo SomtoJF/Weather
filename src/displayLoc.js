@@ -45,6 +45,7 @@ async function getData(location){
     displayLoc(location, timezoneToTimestamp(response.timezone));
     displayTemp(response.weather[0].main, [response.main.temp, toTitlecase(response.weather[0].description)]);
     displayCondition(response.wind.speed, response.main.pressure, response.main.humidity);
+    localStorage.setItem('lastSearch', location);
     return response;
 }
 getData().catch((response)=>{
