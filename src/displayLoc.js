@@ -40,7 +40,7 @@ async function getData(location){
     });
     response = await response.json();
     errorContainer.textContent = '';
-    console.log(response);
+    // console.log(response);
     changeBackground(response.list[0].weather[0].main);
     // Takes location and timezone
     displayLoc(location, timezoneToTimestamp(response.city.timezone));
