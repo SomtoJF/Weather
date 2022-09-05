@@ -24,7 +24,8 @@ function displayForecastData(date, temperature, weather){
 function getForecastData(list){
     forecast.innerHTML = '';
     for(let i = 0; i < list.length; i++){
-        let date = format(new Date(list[i].dt_txt), 'EEEE, h:mm aaa');
+        let timestamp = Date.parse(list[i].dt_txt);
+        let date = format(new Date(timestamp), 'EEEE, h:mm aaa');
         let temperature = kelvintoCelcius(list[i].main.temp)
         displayForecastData(date, temperature, list[i].weather[0].main)
     }
