@@ -14,13 +14,12 @@
 }
 
 #forecast > div{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
 }
 
 #forecast > div >div:nth-child(3){
-  width: 20%;
+  width: 100%;
   height: 100%;
   background-position: center;
   background-repeat: no-repeat;
