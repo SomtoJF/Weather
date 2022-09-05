@@ -4,6 +4,7 @@ import {attributeSetter, childAppender} from './DOMmethods';
 import {default as displayTemp} from "./displayTemp";
 import {default as changeBackground} from './background';
 import {default as displayCondition} from './displayCondition';
+import { default as getForecastData } from "./forecast";
 import {format} from 'date-fns';
 import './displayLoc.css';
 
@@ -34,13 +35,13 @@ function displayLoc(city, timestamp){
 
 
 async function getData(location){
-    let response = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${location}&APPID=7a05c54f9c2f27e1237267d2d7d1c58f`, 
+    let response = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${location}&cnt=8&APPID=7a05c54f9c2f27e1237267d2d7d1c58f`, 
     {
         mode: 'cors'
     });
     response = await response.json();
     errorContainer.textContent = '';
-    // console.log(response);
+    console.log(response);
     changeBackground(response.list[0].weather[0].main);
     // Takes location and timezone
     displayLoc(location, timezoneToTimestamp(response.city.timezone));
@@ -48,6 +49,8 @@ async function getData(location){
     displayTemp(response.list[0].weather[0].main, [response.list[0].main.temp, toTitlecase(response.list[0].weather[0].description)]);
     // Takes wind speed, pressure and humidity
     displayCondition(response.list[0].wind.speed, response.list[0].pop, response.list[0].main.humidity);
+    // Takes array of forecast data
+    getForecastData(response.list);
     localStorage.setItem('lastSearch', location);
     return response;
 }
