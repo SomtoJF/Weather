@@ -1,0 +1,73 @@
+#forecast{
+  padding: 10px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 30vh;
+  width: 100%;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4.6px);
+  -webkit-backdrop-filter: blur(4.6px);
+  border-radius: 16px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#forecast > div{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#forecast > div >div:nth-child(3){
+  width: 20%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+@media all and (min-width: 1000px) {
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  ::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #618cef;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #618cef;
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+    background: #464444;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #ffffff;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+  }
+
+  ::-webkit-scrollbar-track:hover {
+    background: #ffffff;
+  }
+
+  ::-webkit-scrollbar-track:active {
+    background: #ffffff;
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+  
+}
