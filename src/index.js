@@ -1,10 +1,11 @@
 import './index.css';
-import {getData} from './displayLoc';
+import {getCurrentWeather, getForecastWeather} from './displayLoc';
 import {default as storageAvailable} from './storage';
 
 if(storageAvailable('localStorage') && localStorage.getItem('lastSearch')){
-    getData(localStorage.getItem('lastSearch'));
+    getCurrentWeather(localStorage.getItem('lastSearch'));
+    getForecastWeather(localStorage.getItem('lastSearch'));
 }
 else{
-    getData('Lagos');
+    getCurrentWeather('Lagos');
 };
