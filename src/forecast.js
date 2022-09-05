@@ -22,8 +22,11 @@ function displayForecastData(date, temperature, weather){
 };
 
 function getForecastData(list){
+    forecast.innerHTML = '';
     for(let i = 0; i < list.length; i++){
-        displayForecastData(format(new Date(list[i].dt_txt), 'EEEE, h:mm aaa'), kelvintoCelcius(list[i].main.temp), list[i].weather[0].main)
+        let date = format(new Date(list[i].dt_txt), 'EEEE, h:mm aaa');
+        let temperature = kelvintoCelcius(list[i].main.temp)
+        displayForecastData(date, temperature, list[i].weather[0].main)
     }
 }
 export default getForecastData;
