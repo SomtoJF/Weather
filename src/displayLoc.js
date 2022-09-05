@@ -62,7 +62,7 @@ async function getForecastWeather(location){
         mode: 'cors'
     });
     response = await response.json();
-    console.log(response.list);
+    // console.log(response.list);
     // Takes array of forecast data
     getForecastData(response.list);
     return response;
