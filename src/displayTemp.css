@@ -4,6 +4,10 @@
     --cloudy-icon:url('./images/cloudy-icon.png');
     --snowy-icon:url('./images/snowy-icon.png');
     --clear-icon:url('./images/clear-icon.png');
+    --hazy-icon:url('./images/hazy-icon.png');
+    --misty-icon:url('./images/misty-icon.png');
+    --drizzle-icon:url('./images/drizzle-icon.png');
+    --thunderstorm-icon:url('./images/thunderstorm-icon.png');
 }
 
 #Weather{
