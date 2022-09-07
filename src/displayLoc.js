@@ -6,6 +6,7 @@ import {default as changeBackground} from './background';
 import {default as displayCondition} from './displayCondition';
 import { default as getForecastData } from "./forecast";
 import {format} from 'date-fns';
+import { loaderOn, loaderOff } from './loader';
 import './displayLoc.css';
 
 function displayLoc(city, timestamp){
@@ -25,7 +26,8 @@ function displayLoc(city, timestamp){
     childAppender(locationContainer, [form, dateContainer]);
 
     form.addEventListener('submit', (e)=>
-    {
+    {   
+        loaderOn();
         getCurrentWeather(inputLocation.value);
         getForecastWeather(inputLocation.value)
         locationContainer.innerHTML = '';
@@ -54,6 +56,7 @@ async function getCurrentWeather(location){
 }
 getCurrentWeather().catch((response)=>{
     errorContainer.textContent = 'Invalid Entry';
+    loaderOff();
 })
 
 async function getForecastWeather(location){
@@ -65,9 +68,11 @@ async function getForecastWeather(location){
     // console.log(response.list);
     // Takes array of forecast data
     getForecastData(response.list);
+    loaderOff();
     return response;
 }
 getForecastWeather().catch((response)=>{
+    loaderOff();
 })
 
 function toTitlecase(string){
