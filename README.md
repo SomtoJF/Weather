@@ -1,6 +1,6 @@
 # Weather App 
 View current and forecast weather data of thousands of cities around the world.
-![screenshot](./src/images/Screenshot.png)
+![screenshot](./src/images/screenshot.png)
 ## [View Live](https://somtojf.github.io/Weather/)
 ## Getting Started
 In order to setup and work on this project on your own, you will need to:
