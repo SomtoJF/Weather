@@ -5,6 +5,10 @@
     --rain: url('./images/rain-pc.jpg');
     --snow: url('./images/snow-pc.jpg');
     --sunny: url('./images/sunny-pc.jpg');
+    --mist: url('./images/mist-pc.jpg');
+    --haze: url('./images/haze-pc.jpg');
+    --drizzle: url('./images/drizzle-pc.jpg');
+    --thunderstorm: url('./images/thunderstorm-pc.jpg');
     --background: var(--rain);
     font-size: 16px;
     --default-font: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',sans-serif;
@@ -105,5 +109,9 @@ html{
         --rain: url('./images/rain-mobile.jpg');
         --snow: url('./images/snow-mobile.jpg');
         --sunny: url('./images/sunny-mobile.jpg');
+        --mist: url('./images/mist-mobile.jpg');
+        --haze: url('./images/haze-mobile.jpg');
+        --drizzle: url('./images/drizzle-mobile.jpg');
+        --thunderstorm: url('./images/thunderstorm-mobile.jpg');
     }
 }
