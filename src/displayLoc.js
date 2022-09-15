@@ -44,7 +44,6 @@ async function getCurrentWeather(location){
         {
             mode: 'cors'
         });
-        console.log(response);
         response = await response.json();
         if(response.cod == 404) {throw new Error(`City ${location} not found`)};
         errorContainer.textContent = '';
