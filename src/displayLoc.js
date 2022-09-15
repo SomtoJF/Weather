@@ -8,6 +8,7 @@ import { default as getForecastData } from "./forecast";
 import {format} from 'date-fns';
 import { default as loaderClass } from './loader';
 import './displayLoc.css';
+import { default as error } from './errorHandler';
 let loader = new loaderClass(document.getElementById('loader'));
 
 function displayLoc(city, timestamp){
@@ -46,20 +47,17 @@ async function getCurrentWeather(location){
         });
         response = await response.json();
         if(response.cod == 404) {throw new Error(`City ${location} not found`)};
-        errorContainer.textContent = '';
+        error.clear();
         changeBackground(response.weather[0].main);
-        // Takes location and timezone
         displayLoc(location, timezoneToTimestamp(response.timezone));
-        // Takes Main weather, temperature and weather description
         displayTemp(response.weather[0].main, [response.main.temp, toTitlecase(response.weather[0].description)]);
-        // Takes wind speed, pressure and humidity
         displayCondition(response.wind.speed, response.main.pressure, response.main.humidity);
         localStorage.setItem('lastSearch', location);
     }
     catch(response)
     {
         console.log(response.message);
-        errorContainer.textContent = 'Invalid Entry';
+        error.display();
         loader.off();
         getCurrentWeather(localStorage.getItem('lastSearch'));
     }
