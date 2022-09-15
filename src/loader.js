@@ -1,12 +1,19 @@
-let loader = document.getElementById('loader');
-function loaderOn()
+class loader
 {
-    loader.style.display = 'inline-block';
+    constructor(element)
+    {
+        this.container = element;
+    }
+
+    on()
+    {
+        this.container.style.display = 'inline-block';
+    };
+
+    off()
+    {
+        this.container.style.display = 'none';
+    };
 };
 
-function loaderOff()
-{
-    loader.style.display = 'none';
-};
-
-export { loaderOff, loaderOn };
+export default loader;
