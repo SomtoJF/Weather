@@ -6,8 +6,9 @@ import {default as changeBackground} from './background';
 import {default as displayCondition} from './displayCondition';
 import { default as getForecastData } from "./forecast";
 import {format} from 'date-fns';
-import { loaderOn, loaderOff } from './loader';
+import { default as loaderClass } from './loader';
 import './displayLoc.css';
+let loader = new loaderClass(document.getElementById('loader'));
 
 function displayLoc(city, timestamp){
     let form = document.createElement('form');
@@ -27,7 +28,7 @@ function displayLoc(city, timestamp){
 
     form.addEventListener('submit', (e)=>
     {   
-        loaderOn();
+        loader.on();
         getCurrentWeather(inputLocation.value);
         getForecastWeather(inputLocation.value)
         locationContainer.innerHTML = '';
@@ -38,42 +39,54 @@ function displayLoc(city, timestamp){
 
 
 async function getCurrentWeather(location){
-    let response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=7a05c54f9c2f27e1237267d2d7d1c58f`, 
+    try{
+        let response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=7a05c54f9c2f27e1237267d2d7d1c58f`, 
+        {
+            mode: 'cors'
+        });
+        console.log(response);
+        response = await response.json();
+        if(response.cod == 404) {throw new Error(`City ${location} not found`)};
+        errorContainer.textContent = '';
+        changeBackground(response.weather[0].main);
+        // Takes location and timezone
+        displayLoc(location, timezoneToTimestamp(response.timezone));
+        // Takes Main weather, temperature and weather description
+        displayTemp(response.weather[0].main, [response.main.temp, toTitlecase(response.weather[0].description)]);
+        // Takes wind speed, pressure and humidity
+        displayCondition(response.wind.speed, response.main.pressure, response.main.humidity);
+        localStorage.setItem('lastSearch', location);
+    }
+    catch(response)
     {
-        mode: 'cors'
-    });
-    response = await response.json();
-    errorContainer.textContent = '';
-    changeBackground(response.weather[0].main);
-    // Takes location and timezone
-    displayLoc(location, timezoneToTimestamp(response.timezone));
-    // Takes Main weather, temperature and weather description
-    displayTemp(response.weather[0].main, [response.main.temp, toTitlecase(response.weather[0].description)]);
-    // Takes wind speed, pressure and humidity
-    displayCondition(response.wind.speed, response.main.pressure, response.main.humidity);
-    localStorage.setItem('lastSearch', location);
-    return response;
-}
-getCurrentWeather().catch((response)=>{
-    errorContainer.textContent = 'Invalid Entry';
-    loaderOff();
-})
+        console.log(response.message);
+        errorContainer.textContent = 'Invalid Entry';
+        loader.off();
+        getCurrentWeather(localStorage.getItem('lastSearch'));
+    }
+};
 
 async function getForecastWeather(location){
-    let response = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${location}&cnt=8&APPID=7a05c54f9c2f27e1237267d2d7d1c58f`, 
+    try{
+        let response = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${location}&cnt=8&APPID=7a05c54f9c2f27e1237267d2d7d1c58f`, 
+        {
+            mode: 'cors'
+        });
+        response = await response.json();
+        loader.off();
+        if(response.cod !== 404)
+        {
+            // Takes array of forecast data
+            getForecastData(response.list);
+            loader.off();
+            return response;
+        };
+    }
+    catch
     {
-        mode: 'cors'
-    });
-    response = await response.json();
-    // console.log(response.list);
-    // Takes array of forecast data
-    getForecastData(response.list);
-    loaderOff();
-    return response;
-}
-getForecastWeather().catch((response)=>{
-    loaderOff();
-})
+        getForecastWeather(localStorage.getItem('lastSearch'));
+    };
+};
 
 function toTitlecase(string){
     string = string.split(' ');
