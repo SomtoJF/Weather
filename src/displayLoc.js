@@ -1,5 +1,4 @@
 let locationContainer = document.getElementById('Location');
-let errorContainer = document.getElementById('error');
 import {attributeSetter, childAppender} from './DOMmethods';
 import {default as displayTemp} from "./displayTemp";
 import {default as changeBackground} from './background';
