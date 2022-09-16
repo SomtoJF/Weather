@@ -2,6 +2,7 @@ let weatherContainer = document.getElementById('Weather');
 import {changeIcon} from './background';
 import './displayTemp.css';
 
+// Takes Main weather, temperature and weather description
 function displayTemp (main, tempAndWeather){
     weatherContainer.innerHTML = '';
     for(let i = 0; i < tempAndWeather.length; i++){

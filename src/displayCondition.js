@@ -1,12 +1,13 @@
 import './displayCondition.css';
-import pressure from "./images/pressure.png";
+import pressureIcon from "./images/pressure.png";
 import humidityPercent from "./images/water%.png";
 import windSpeed from "./images/wind.png";
 let condition = document.getElementById('Conditions');
 
-function displayCondition(wind, rain, humidity){
+// Takes wind speed, pressure and humidity
+function displayCondition(wind, pressure, humidity){
     condition.innerHTML = '';
-    let infoArray = [windSpeed, pressure, humidityPercent, wind, rain, humidity, 'Wind | km/h', 'Pressure | hPa', 'Humidity | %'];
+    let infoArray = [windSpeed, pressureIcon, humidityPercent, wind, pressure, humidity, 'Wind | km/h', 'Pressure | hPa', 'Humidity | %'];
     for(let i = 0; i < infoArray.length; i++){
         let div = document.createElement('div');
         if(i < 3){
